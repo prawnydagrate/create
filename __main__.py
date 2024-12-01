@@ -21,7 +21,9 @@ def main():
     )
     modules = {}
     for t in TYPES:
-        modules[t] = mod = __import__("commands", fromlist=[t]).__dict__[t]  # python magic haha
+        modules[t] = mod = __import__("commands", fromlist=[t]).__dict__[
+            t
+        ]  # python magic haha
         mod.add_commands(subparsers)
     args = parser.parse_args()
     next_steps = modules[args.command].run(args)
